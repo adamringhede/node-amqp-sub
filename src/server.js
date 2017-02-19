@@ -8,7 +8,6 @@ class Server extends EventEmitter {
 
   constructor(httpServer, protocol = null) {
     super();
-    var self = this;
     this.connections = 0;
 
     var wsServer = new WebSocketServer({
@@ -20,7 +19,7 @@ class Server extends EventEmitter {
       return true;
     }
      
-    wsServer.on('request', function(request) {
+    wsServer.on('request', request => {
 
       if (!originIsAllowed(request.origin)) {
         request.reject("Origin not allowed");
@@ -28,13 +27,13 @@ class Server extends EventEmitter {
       }
       
       var connection = null;
-      self.connections++;
+      this.connections++;
 
       try {
-        self.emit('request', request, () => {
+        this.emit('request', request, () => {
           connection = request.accept(protocol, request.origin);
-          connection.on('close', function(reasonCode, description) {
-            self.connections--;
+          connection.on('close', (reasonCode, description) => {
+            this.connections--;
             console.log('Subscriber ' + connection.remoteAddress + ' disconnected.');
           });
           return connection;
