@@ -1,0 +1,19 @@
+{
+  "name": "@adamringhede/amqp-sub",
+  "version": "1.0.0",
+  "description": "Multicasting on AMQP topic exchanges with WebSockets",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {
+    "amqplib": "^0.5.1",
+    "websocket": "^1.0.24"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo 'No tests'"
+  },
+  "author": "Adam Ringhede",
+  "license": "ISC"
+}
