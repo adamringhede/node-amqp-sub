@@ -37,7 +37,7 @@ class Subscriber {
           console.log(`Rejected subscribe request: ${request.resourceURL.href}`)
           return request.reject("Invalid request");
         }
-      }) 
+      }).catch(err => request.reject())
     }
   }
 
