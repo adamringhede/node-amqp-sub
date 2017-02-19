@@ -6,11 +6,9 @@ const validRouteKey = /[\w\_\-\/\\#\*]+(\.[\w\_\-\/\\#\*]*)*/i
 
 module.exports = 
 class Subscriber {
-  constructor({handler, path = '', exchange = 'default', port = 8001, httpServer = createHttpServer(port)}) {
+  constructor({handler, path = '', amqpUri = process.env.AMQP_URI || 'amqp://localhost',  exchange = 'default', port = 8001, httpServer = createHttpServer(port)}) {
     var server = new Server(httpServer);
     server.on('request', this.handleRequest(exchange, path, handler))
-    
-    const amqpUri = process.env.AMQP_URL || 'amqp://localhost'
     this.mqReady = createAmqpConnection(amqpUri, exchange)
   }
 
