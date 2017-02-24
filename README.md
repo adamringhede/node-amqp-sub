@@ -1,3 +1,6 @@
+This is a layer between WebSockets and message queue using AMQP. It makes it possible to easily build fault tolerant, scalable, and reliable notification systems with a layer of security. 
+
+
 ## How to use it
 
 ### Example usage
